@@ -53,30 +53,7 @@ python -m pubmed_paper_fetcher "diabetes AND insulin"
 python -m pubmed_paper_fetcher -l 500 -d -f diabetes_industry.csv "diabetes AND insulin"
 
 ```
-### 4 Architecture & Reasoning Flow
-              ┌───────────────┐
-   Query ───► │   ESearch     │─┐     (returns PubMed IDs)
-              └───────────────┘ │
-                                ▼
-                          ┌─────────────┐   batched 200 IDs
-                          │   EFetch    │──────┐
-                          └─────────────┘      │
-                                               ▼
-                                   ┌────────────────────┐
-                                   │   XML  Parser      │
-                                   │  • extract title   │
-                                   │  • date            │
-                                   │  • authors + affil │
-                                   └────────────────────┘
-                                               │
-                         regex filter          ▼
-                (company vs academic)  ┌─────────────────┐
-                                        │   Row Builder   │
-                                        └─────────────────┘
-                                               │
-                                          pandas DF
-                                               │
-                                     CSV file  ▽  console
+### 4 Reasoning Flow
                                      
 1. ESearch – Retrieves up to N PubMed IDs for the user query
 
@@ -88,7 +65,7 @@ python -m pubmed_paper_fetcher -l 500 -d -f diabetes_industry.csv "diabetes AND 
 
 5. Output Layer – Builds a DataFrame → saves to CSV or prints
 
-Extending / Customising
+### Extending / Customising
 Company keyword list → edit the COMPANY_KEYWORDS regex in fetcher.py.
 
 Academic exclusions → tweak ACADEMIC_KEYWORDS.
@@ -96,3 +73,9 @@ Academic exclusions → tweak ACADEMIC_KEYWORDS.
 JSON output – add a --json flag and call df.to_json().
 
 Higher concurrency – wrap efetch calls with asyncio or ThreadPoolExecutor (respect NCBI rate limits!).
+
+### Credits
+Powered by NCBI E-utilities, Requests, lxml, pandas, and Rich.
+Built with ❤️ for researchers, data scientists, and competitive-intelligence teams.
+
+Enjoy your PubMed Paper Fetcher and happy hunting! 🧪
