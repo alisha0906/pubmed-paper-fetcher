@@ -55,15 +55,15 @@ python -m pubmed_paper_fetcher -l 500 -d -f diabetes_industry.csv "diabetes AND 
 ```
 ### 4 Reasoning Flow
                                      
-1. ESearch – Retrieves up to N PubMed IDs for the user query
+a. ESearch – Retrieves up to N PubMed IDs for the user query
 
-2. EFetch – Downloads full XML metadata in batches (≤ 300 IDs/request)
+b. EFetch – Downloads full XML metadata in batches (≤ 300 IDs/request)
 
-3. XML Parser – Extracts key fields & affiliation text
+c. XML Parser – Extracts key fields & affiliation text
 
-4. Industry Filter – Regex rules flag non-academic authors
+d. Industry Filter – Regex rules flag non-academic authors
 
-5. Output Layer – Builds a DataFrame → saves to CSV or prints
+e. Output Layer – Builds a DataFrame → saves to CSV or prints
 
 ### 5 Extending / Customising
 Company keyword list → edit the COMPANY_KEYWORDS regex in fetcher.py.
@@ -76,6 +76,7 @@ Higher concurrency – wrap efetch calls with asyncio or ThreadPoolExecutor (res
 
 ### 6 Credits
 Powered by NCBI E-utilities, Requests, lxml, pandas, and Rich.
+
 Built with ❤️ for researchers, data scientists, and competitive-intelligence teams.
 
 Enjoy your PubMed Paper Fetcher and happy hunting! 🧪
