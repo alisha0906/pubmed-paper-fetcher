@@ -65,7 +65,7 @@ python -m pubmed_paper_fetcher -l 500 -d -f diabetes_industry.csv "diabetes AND 
 
 5. Output Layer – Builds a DataFrame → saves to CSV or prints
 
-### Extending / Customising
+### 5 Extending / Customising
 Company keyword list → edit the COMPANY_KEYWORDS regex in fetcher.py.
 
 Academic exclusions → tweak ACADEMIC_KEYWORDS.
@@ -74,7 +74,7 @@ JSON output – add a --json flag and call df.to_json().
 
 Higher concurrency – wrap efetch calls with asyncio or ThreadPoolExecutor (respect NCBI rate limits!).
 
-### Credits
+### 6 Credits
 Powered by NCBI E-utilities, Requests, lxml, pandas, and Rich.
 Built with ❤️ for researchers, data scientists, and competitive-intelligence teams.
 
